@@ -1,0 +1,150 @@
+html
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fantasy Football Pick'em</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f4f6f8;
+    }
+
+    form {
+      background: white;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #ccc;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: bold;
+    }
+
+    .option {
+      margin-top: 8px;
+      font-weight: normal;
+    }
+
+    button {
+      margin-top: 24px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #1769aa;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:disabled {
+      background: #888;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Fantasy Football Pick'em</h1>
+  <p>Submit your winner selections for Week 1.</p>
+
+  <form id="picksForm">
+    <label for="player">Your name</label>
+    <input id="player" name="player" required>
+
+    <label>Alex vs. Jordan</label>
+    <div class="option">
+      <input type="radio" name="matchup1" value="Alex" required>
+      Alex
+    </div>
+    <div class="option">
+      <input type="radio" name="matchup1" value="Jordan">
+      Jordan
+    </div>
+
+    <label>Sam vs. Taylor</label>
+    <div class="option">
+      <input type="radio" name="matchup2" value="Sam" required>
+      Sam
+    </div>
+    <div class="option">
+      <input type="radio" name="matchup2" value="Taylor">
+      Taylor
+    </div>
+
+    <button type="submit">Submit Picks</button>
+    <div id="message"></div>
+  </form>
+
+  <script>
+    const APPS_SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbzKLSsmLQL9am3JtQK5RUeWBIL_6UI8kzUNw0vZRn8yUvVWRZQhRgc_fjV7M8AA0ygl/exec";
+
+    document.getElementById("picksForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const button = event.target.querySelector("button");
+      const message = document.getElementById("message");
+
+      button.disabled = true;
+      message.textContent = "Submitting...";
+
+      const formData = new FormData(event.target);
+
+      const payload = {
+        player: formData.get("player"),
+        week: 1,
+        picks: [
+          {
+            matchup: "Alex vs. Jordan",
+            selection: formData.get("matchup1")
+          },
+          {
+            matchup: "Sam vs. Taylor",
+            selection: formData.get("matchup2")
+          }
+        ]
+      };
+
+      try {
+        const response = await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify(payload),
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          }
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          message.textContent = "Your picks were submitted!";
+          event.target.reset();
+        } else {
+          message.textContent = "Error: " + result.error;
+        }
+
+      } catch (error) {
+        message.textContent =
+          "The picks may have been submitted, but the response could not be confirmed.";
+        console.error(error);
+      }
+
+      button.disabled = false;
+    });
+  </script>
+</body>
+</html>
