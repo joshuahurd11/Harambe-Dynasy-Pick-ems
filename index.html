@@ -146,68 +146,79 @@ h2 {
   </form>
 
   <script>
+
+    // Change this to your actual deadline.
+// This example is September 10, 2026 at 7:00 PM Eastern Time. 2026-09-10T19:00:00-04:00
+const CUTOFF_TIME = new Date("2026-08-24T20:30:00-04:00");
     const APPS_SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbzKLSsmLQL9am3JtQK5RUeWBIL_6UI8kzUNw0vZRn8yUvVWRZQhRgc_fjV7M8AA0ygl/exec";
+    
+document.getElementById("picksForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
 
-    document.getElementById("picksForm").addEventListener("submit", async function(event) {
-      event.preventDefault();
+  const button = event.target.querySelector("button");
+  const message = document.getElementById("message");
 
-      const button = event.target.querySelector("button");
-      const message = document.getElementById("message");
-
-      button.disabled = true;
-      message.textContent = "Submitting...";
-
-      const formData = new FormData(event.target);
-
-      const payload = {
-        player: formData.get("player"),
-        week: 1,
-        picks: [
-          {
-            matchup: "Josh vs. Dylan",
-            selection: formData.get("matchup1")
-          },
-          {
-            matchup: "Jake vs. David",
-            selection: formData.get("matchup2")
-          },
-          {
-            matchup: "Nate vs. Joey",
-            selection: formData.get("matchup3")
-          },
-          {
-            matchup: "Drew vs. Austin",
-            selection: formData.get("matchup4")
-          },
-          {
-            matchup: "Randy vs. Sam",
-            selection: formData.get("matchup5")
-          }
-        ]
-      };
-
-      try {
-        await fetch(APPS_SCRIPT_URL, {
-  method: "POST",
-  mode: "no-cors",
-  body: JSON.stringify(payload),
-  headers: {
-    "Content-Type": "text/plain;charset=utf-8"
+  // Convenient browser-side check
+  if (new Date() >= CUTOFF_TIME) {
+    message.textContent = "Submissions are closed.";
+    button.disabled = true;
+    return;
   }
-});
 
-message.textContent = "Your picks were submitted!";
-event.target.reset();
+  button.disabled = true;
+  message.textContent = "Submitting...";
 
-      } catch (error) {
-        message.textContent =
-          "The picks may have been submitted, but the response could not be confirmed.";
-        console.error(error);
+  const formData = new FormData(event.target);
+
+  const payload = {
+    player: formData.get("player"),
+    week: 1,
+    picks: [
+      {
+        matchup: "Josh vs. Dylan",
+        selection: formData.get("matchup1")
+      },
+      {
+        matchup: "Jake vs. David",
+        selection: formData.get("matchup2")
+      },
+      {
+        matchup: "Nate vs. Joey",
+        selection: formData.get("matchup3")
+      },
+      {
+        matchup: "Drew vs. Austin",
+        selection: formData.get("matchup4")
+      },
+      {
+        matchup: "Randy vs. Sam",
+        selection: formData.get("matchup5")
       }
+    ]
+  };
 
-      button.disabled = false;
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      }
     });
+
+    message.textContent = "Your picks were submitted!";
+    event.target.reset();
+
+  } catch (error) {
+    message.textContent =
+      "The picks may have been submitted, but the response could not be confirmed.";
+    console.error(error);
+  }
+
+  button.disabled = false;
+});
   </script>
 </body>
 </html>
