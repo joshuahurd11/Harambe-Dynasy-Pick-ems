@@ -65,24 +65,54 @@ html
     <label for="player">Your name</label>
     <input id="player" name="player" required>
 
-    <label>Alex vs. Jordan</label>
+    <label>Josh vs. Sam</label>
     <div class="option">
-      <input type="radio" name="matchup1" value="Alex" required>
-      Alex
+      <input type="radio" name="matchup1" value="Josh" required>
+      Josh
     </div>
     <div class="option">
-      <input type="radio" name="matchup1" value="Jordan">
-      Jordan
-    </div>
-
-    <label>Sam vs. Taylor</label>
-    <div class="option">
-      <input type="radio" name="matchup2" value="Sam" required>
+      <input type="radio" name="matchup1" value="Sam">
       Sam
     </div>
+
+    <label>Jake vs. David</label>
     <div class="option">
-      <input type="radio" name="matchup2" value="Taylor">
-      Taylor
+      <input type="radio" name="matchup2" value="Jake" required>
+      Jake
+    </div>
+    <div class="option">
+      <input type="radio" name="matchup2" value="David">
+      David
+    </div>
+
+    <label>Nate vs. Joey</label>
+    <div class="option">
+      <input type="radio" name="matchup2" value="Nate" required>
+      Nate
+    </div>
+    <div class="option">
+      <input type="radio" name="matchup2" value="Joey">
+      Joey
+    </div>
+
+    <label>Drew vs. Dylan</label>
+    <div class="option">
+      <input type="radio" name="matchup2" value="Drew" required>
+      Drew
+    </div>
+    <div class="option">
+      <input type="radio" name="matchup2" value="Dylan">
+      Dylan
+    </div>
+
+    <label>Randy vs. Austin</label>
+    <div class="option">
+      <input type="radio" name="matchup2" value="Randy" required>
+      Randy
+    </div>
+    <div class="option">
+      <input type="radio" name="matchup2" value="Austin">
+      Austin
     </div>
 
     <button type="submit">Submit Picks</button>
@@ -109,11 +139,23 @@ html
         week: 1,
         picks: [
           {
-            matchup: "Alex vs. Jordan",
+            matchup: "Josh vs. Sam",
             selection: formData.get("matchup1")
           },
           {
-            matchup: "Sam vs. Taylor",
+            matchup: "Jake vs. David",
+            selection: formData.get("matchup2")
+          },
+          {
+            matchup: "Nate vs. Joey",
+            selection: formData.get("matchup2")
+          },
+          {
+            matchup: "Drew vs. Dylan",
+            selection: formData.get("matchup2")
+          },
+          {
+            matchup: "Randy vs. Austin",
             selection: formData.get("matchup2")
           }
         ]
