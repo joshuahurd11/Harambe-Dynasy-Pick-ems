@@ -90,54 +90,54 @@ h2 {
     <label for="player">Your First Name</label>
     <input id="player" Name="player" required>
 
-    <label>Josh vs. Dylan</label>
+    <label>Austin vs. Nate</label>
     <div class="option">
-      <input type="radio" Name="matchup1" value="Josh" required>
-      Josh
+      <input type="radio" Name="matchup1" value="Austin" required>
+      Austin
     </div>
     <div class="option">
-      <input type="radio" Name="matchup1" value="Dylan">
-      Dylan
+      <input type="radio" Name="matchup1" value="Nate">
+      Nate
     </div>
 
-    <label>Jake vs. David</label>
+    <label>Jake vs. Josh</label>
     <div class="option">
       <input type="radio" Name="matchup2" value="Jake" required>
       Jake
     </div>
     <div class="option">
-      <input type="radio" Name="matchup2" value="David">
+      <input type="radio" Name="matchup2" value="Josh">
+      Josh
+    </div>
+
+    <label>David vs. Sam</label>
+    <div class="option">
+      <input type="radio" Name="matchup3" value="David" required>
       David
     </div>
-
-    <label>Nate vs. Joey</label>
     <div class="option">
-      <input type="radio" Name="matchup3" value="Nate" required>
-      Nate
-    </div>
-    <div class="option">
-      <input type="radio" Name="matchup3" value="Joey">
-      Joey
+      <input type="radio" Name="matchup3" value="Sam">
+      Sam
     </div>
 
-    <label>Drew vs. Austin</label>
+    <label>Randy vs. Dylan</label>
     <div class="option">
-      <input type="radio" Name="matchup4" value="Drew" required>
-      Drew
-    </div>
-    <div class="option">
-      <input type="radio" Name="matchup4" value="Austin">
-      Austin
-    </div>
-
-    <label>Randy vs. Sam</label>
-    <div class="option">
-      <input type="radio" Name="matchup5" value="Randy" required>
+      <input type="radio" Name="matchup4" value="Randy" required>
       Randy
     </div>
     <div class="option">
-      <input type="radio" Name="matchup5" value="Sam">
-      Sam
+      <input type="radio" Name="matchup4" value="Dylan">
+      Dylan
+    </div>
+
+    <label>Joey vs. Drew</label>
+    <div class="option">
+      <input type="radio" Name="matchup5" value="Joey" required>
+      Joey
+    </div>
+    <div class="option">
+      <input type="radio" Name="matchup5" value="Drew">
+      Drew
     </div>
 
     <button type="submit">Submit Picks</button>
@@ -180,23 +180,23 @@ document.getElementById("picksForm").addEventListener("submit", async function(e
     week: 1,
     picks: [
       {
-        matchup: "Josh vs. Dylan",
+        matchup: "Austin vs. Nate",
         selection: formData.get("matchup1")
       },
       {
-        matchup: "Jake vs. David",
+        matchup: "Jake vs. Josh",
         selection: formData.get("matchup2")
       },
       {
-        matchup: "Nate vs. Joey",
+        matchup: "David vs. Sam",
         selection: formData.get("matchup3")
       },
       {
-        matchup: "Drew vs. Austin",
+        matchup: "Randy vs. Dylan",
         selection: formData.get("matchup4")
       },
       {
-        matchup: "Randy vs. Sam",
+        matchup: "Joey vs. Drew",
         selection: formData.get("matchup5")
       }
     ]
