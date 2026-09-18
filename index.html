@@ -84,63 +84,63 @@ h2 {
 
 <body>
   <h1>Harambe Dynasty Pick'em</h1>
-  <p><strong>Submit your winner selections for Week 1.</strong></p>
+  <p><strong>Submit your winner selections for Week 2.</strong></p>
 
   <form id="picksForm">
     <label for="player">Your First Name</label>
     <input id="player" Name="player" required>
 
-    <label>Austin (-147) vs. Nate (+147)</label>
+    <label>Josh vs. Randy</label>
     <div class="option">
-      <input type="radio" Name="matchup1" value="Austin" required>
-      Austin
+      <input type="radio" Name="matchup1" value="Josh" required>
+      Josh
     </div>
     <div class="option">
-      <input type="radio" Name="matchup1" value="Nate">
-      Nate
-    </div>
-
-    <label>Joey (+166) vs. Drew (-166)</label>
-    <div class="option">
-      <input type="radio" Name="matchup2" value="Joey" required>
-      Joey
-    </div>
-    <div class="option">
-      <input type="radio" Name="matchup2" value="Drew">
-      Drew
+      <input type="radio" Name="matchup1" value="Randy">
+      Randy
     </div>
 
-    <label>David (+103) vs. Sam (-103)</label>
+    <label>Dylan vs. Sam</label>
     <div class="option">
-      <input type="radio" Name="matchup3" value="David" required>
-      David
+      <input type="radio" Name="matchup2" value="Dylan" required>
+      Dylan
     </div>
     <div class="option">
-      <input type="radio" Name="matchup3" value="Sam">
+      <input type="radio" Name="matchup2" value="Sam">
       Sam
     </div>
 
-    <label>Randy (+109) vs. Dylan (-109)</label>
+    <label>Drew vs. David</label>
     <div class="option">
-      <input type="radio" Name="matchup4" value="Randy" required>
-      Randy
+      <input type="radio" Name="matchup3" value="Drew" required>
+      Drew
     </div>
     <div class="option">
-      <input type="radio" Name="matchup4" value="Dylan">
-      Dylan
+      <input type="radio" Name="matchup3" value="David">
+      David
+    </div>
+
+    <label>Austin vs. Jake</label>
+    <div class="option">
+      <input type="radio" Name="matchup4" value="Austin" required>
+      Austin
+    </div>
+    <div class="option">
+      <input type="radio" Name="matchup4" value="Jake">
+      Jake
     </div>
     
 
     <label>Matchup of the Week</label>
     
-    <label>Jake (-105) vs. Josh (+105)</label>
+    <label>Joey vs. Nate</label>
     <div class="option">
-      <input type="radio" Name="matchup5" value="Jake" required>
-      Jake
+      <input type="radio" Name="matchup5" value="Joey" required>
+      Joey
     </div>
     <div class="option">
-      <input type="radio" Name="matchup5" value="Josh">
-      Josh
+      <input type="radio" Name="matchup5" value="Nate">
+      Nate
     </div>
 
     <button type="submit">Submit Picks</button>
@@ -156,7 +156,7 @@ h2 {
 
     // Change this to your actual deadline.
 // This example is September 10, 2026 at 7:00 PM Eastern Time. 2026-09-10T19:00:00-04:00
-const CUTOFF_TIME = new Date("2026-09-10T20:30:00-04:00");
+const CUTOFF_TIME = new Date("2026-09-20T13:00:00-04:00");
     const APPS_SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbzKLSsmLQL9am3JtQK5RUeWBIL_6UI8kzUNw0vZRn8yUvVWRZQhRgc_fjV7M8AA0ygl/exec";
     
@@ -180,26 +180,26 @@ document.getElementById("picksForm").addEventListener("submit", async function(e
 
   const payload = {
     player: formData.get("player"),
-    week: 1,
+    week: 2,
     picks: [
       {
-        matchup: "Austin vs. Nate",
+        matchup: "Josh vs. Randy",
         selection: formData.get("matchup1")
       },
       {
-        matchup: "Joey vs. Drew",
+        matchup: "Dylan vs. Sam",
         selection: formData.get("matchup2")
       },
       {
-        matchup: "David vs. Sam",
+        matchup: "Drew vs. David",
         selection: formData.get("matchup3")
       },
       {
-        matchup: "Randy vs. Dylan",
+        matchup: "Austin vs. Jake",
         selection: formData.get("matchup4")
       },
       {
-        matchup: "Jake vs. Josh",
+        matchup: "Joey vs. Nate",
         selection: formData.get("matchup5")
       }
     ]
