@@ -84,63 +84,63 @@ h2 {
 
 <body>
   <h1>Harambe Dynasty Pick'em</h1>
-  <p><strong>Submit your winner selections for Week 6.</strong></p>
+  <p><strong>Submit your winner selections for Week 7.</strong></p>
 
   <form id="picksForm">
     <label for="player">Your First Name</label>
     <input id="player" Name="player" required>
 
-    <label>Dylan vs. David</label>
+    <label>Randy vs. Sam</label>
     <div class="option">
-      <input type="radio" Name="matchup1" value="Dylan" required>
-      Dylan
-    </div>
-    <div class="option">
-      <input type="radio" Name="matchup1" value="David">
-      David
-    </div>
-
-    <label>Jake vs. Randy</label>
-    <div class="option">
-      <input type="radio" Name="matchup2" value="Jake" required>
-      Jake
-    </div>
-    <div class="option">
-      <input type="radio" Name="matchup2" value="Randy">
+      <input type="radio" Name="matchup1" value="Randy" required>
       Randy
     </div>
-
-    <label>Austin vs. Drew</label>
     <div class="option">
-      <input type="radio" Name="matchup3" value="Austin" required>
+      <input type="radio" Name="matchup1" value="Sam">
+      Sam
+    </div>
+
+    <label>Josh vs. Austin</label>
+    <div class="option">
+      <input type="radio" Name="matchup2" value="Josh" required>
+      Josh
+    </div>
+    <div class="option">
+      <input type="radio" Name="matchup2" value="Austin">
       Austin
+    </div>
+
+    <label>Jake vs. Drew</label>
+    <div class="option">
+      <input type="radio" Name="matchup3" value="Jake" required>
+      Jake
     </div>
     <div class="option">
       <input type="radio" Name="matchup3" value="Drew">
       Drew
     </div>
 
-    <label>Sam vs. Nate</label>
+    <label>Joey vs. David</label>
     <div class="option">
-      <input type="radio" Name="matchup4" value="Sam" required>
-      Sam
+      <input type="radio" Name="matchup4" value="Joey" required>
+      Joey
     </div>
     <div class="option">
-      <input type="radio" Name="matchup4" value="Nate">
-      Nate
+      <input type="radio" Name="matchup4" value="David">
+      David
     </div>
     
 
     <label>Matchup of the Week</label>
     
-    <label>Josh vs. Joey</label>
+    <label>Nate vs. Dylan</label>
     <div class="option">
-      <input type="radio" Name="matchup5" value="Josh" required>
-      Josh
+      <input type="radio" Name="matchup5" value="Nate" required>
+      Nate
     </div>
     <div class="option">
-      <input type="radio" Name="matchup5" value="Joey">
-      Joey
+      <input type="radio" Name="matchup5" value="Dylan">
+      Dylan
     </div>
 
     <button type="submit">Submit Picks</button>
@@ -156,7 +156,7 @@ h2 {
 
     // Change this to your actual deadline.
 // This example is September 10, 2026 at 7:00 PM Eastern Time. 2026-09-10T19:00:00-04:00
-const CUTOFF_TIME = new Date("2026-10-18T13:00:00-04:00");
+const CUTOFF_TIME = new Date("2026-10-25T13:00:00-04:00");
     const APPS_SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbzKLSsmLQL9am3JtQK5RUeWBIL_6UI8kzUNw0vZRn8yUvVWRZQhRgc_fjV7M8AA0ygl/exec";
     
@@ -180,26 +180,26 @@ document.getElementById("picksForm").addEventListener("submit", async function(e
 
   const payload = {
     player: formData.get("player"),
-    week: 6,
+    week: 7,
     picks: [
       {
-        matchup: "Dylan vs. David",
+        matchup: "Randy vs. Sam",
         selection: formData.get("matchup1")
       },
       {
-        matchup: "Jake vs. Randy",
+        matchup: "Josh vs. Austin",
         selection: formData.get("matchup2")
       },
       {
-        matchup: "Austin vs. Drew",
+        matchup: "Jake vs. Drew",
         selection: formData.get("matchup3")
       },
       {
-        matchup: "Sam vs. Nate",
+        matchup: "Joey vs. David",
         selection: formData.get("matchup4")
       },
       {
-        matchup: "Josh vs. Joey",
+        matchup: "Nate vs. Dylan",
         selection: formData.get("matchup5")
       }
     ]
